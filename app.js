@@ -7,7 +7,7 @@
 // dann erstattet Etsy einen Teil der Gebuehren fuer Kaeufe ueber diese Seite.
 // Leere Produkt-Links fuehren vorerst auf den Shop.
 const ETSY = {
-  shop: "https://www.etsy.com/shop/ElsewhereMaps",
+  shop: "https://elsewheremaps.etsy.com",   // Share-&-Save-Link (Etsy erstattet einen Teil der Gebuehren)
   earthAroundYou: "",  // Anzeige The Earth Around You (bzw. eine Kollektion mit allen vier Anzeigen)
   oneOcean: "",        // Anzeige One Ocean Map
 };
@@ -16,7 +16,7 @@ const PRODUCTS = ["earth", "ocean"];
 const LANGS = ["en", "de", "fr", "es"];
 let UI = "en";
 const t = (k) => (window.UI_STRINGS[UI] || {})[k] ?? window.UI_STRINGS.en[k] ?? k;
-const etsyOk = (u) => typeof u === "string" && /^https:\/\/(www\.)?etsy\.com\//.test(u);
+const etsyOk = (u) => typeof u === "string" && /^https:\/\/([a-z0-9-]+\.)?etsy\.com(\/|$)/.test(u);   // auch Share-&-Save-Links wie https://elsewheremaps.etsy.com
 
 function apply() {
   document.documentElement.lang = UI;
