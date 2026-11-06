@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://elsewhere-maps.com/</loc>
+    <lastmod>2026-11-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elsewhere-maps.com/?ui=en"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://elsewhere-maps.com/?ui=de"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://elsewhere-maps.com/?ui=fr"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://elsewhere-maps.com/?ui=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://elsewhere-maps.com/"/>
+    <image:image><image:loc>https://elsewhere-maps.com/img/earth_room.jpg</image:loc><image:title>Personalized round world map poster in the azimuthal equidistant projection</image:title></image:image>
+    <image:image><image:loc>https://elsewhere-maps.com/img/earth_variants.jpg</image:loc><image:title>Azimuthal equidistant world map as round poster, round aluminum print, square poster and framed poster</image:title></image:image>
+    <image:image><image:loc>https://elsewhere-maps.com/img/earth_closeup.jpg</image:loc><image:title>Close-up of the azimuthal equidistant map with true distances</image:title></image:image>
+    <image:image><image:loc>https://elsewhere-maps.com/img/earth_unique.jpg</image:loc><image:title>Azimuthal equidistant projection centered on Munich, New York, Tokyo and Cape Town</image:title></image:image>
+    <image:image><image:loc>https://elsewhere-maps.com/img/earth_how_it_works.jpg</image:loc><image:title>How the azimuthal equidistant projection works</image:title></image:image>
+    <image:image><image:loc>https://elsewhere-maps.com/img/earth_other_maps.jpg</image:loc><image:title>Azimuthal equidistant map compared with a Mercator world map</image:title></image:image>
+    <image:image><image:loc>https://elsewhere-maps.com/img/earth_personalized.jpg</image:loc><image:title>Custom world map centered on your city or coordinates</image:title></image:image>
+    <image:image><image:loc>https://elsewhere-maps.com/img/earth_closeup_asia.jpg</image:loc><image:title>Azimuthal equidistant map close-up: Asia and the Pacific with true distances</image:title></image:image>
+    <image:image><image:loc>https://elsewhere-maps.com/img/earth_languages.jpg</image:loc><image:title>Personalized world map in 14 languages, km or miles</image:title></image:image>
+    <image:image><image:loc>https://elsewhere-maps.com/img/ocean_room.jpg</image:loc><image:title>One Ocean Map poster in the Spilhaus projection</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://elsewhere-maps.com/?ui=en</loc>
+    <lastmod>2026-11-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elsewhere-maps.com/?ui=en"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://elsewhere-maps.com/?ui=de"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://elsewhere-maps.com/?ui=fr"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://elsewhere-maps.com/?ui=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://elsewhere-maps.com/"/>
+  </url>
+  <url>
+    <loc>https://elsewhere-maps.com/?ui=de</loc>
+    <lastmod>2026-11-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elsewhere-maps.com/?ui=en"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://elsewhere-maps.com/?ui=de"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://elsewhere-maps.com/?ui=fr"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://elsewhere-maps.com/?ui=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://elsewhere-maps.com/"/>
+  </url>
+  <url>
+    <loc>https://elsewhere-maps.com/?ui=fr</loc>
+    <lastmod>2026-11-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elsewhere-maps.com/?ui=en"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://elsewhere-maps.com/?ui=de"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://elsewhere-maps.com/?ui=fr"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://elsewhere-maps.com/?ui=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://elsewhere-maps.com/"/>
+  </url>
+  <url>
+    <loc>https://elsewhere-maps.com/?ui=es</loc>
+    <lastmod>2026-11-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://elsewhere-maps.com/?ui=en"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://elsewhere-maps.com/?ui=de"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://elsewhere-maps.com/?ui=fr"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://elsewhere-maps.com/?ui=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://elsewhere-maps.com/"/>
+  </url>
+</urlset>

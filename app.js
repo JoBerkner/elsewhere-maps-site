@@ -25,6 +25,7 @@ function apply() {
   document.querySelectorAll("[data-i18n-alt]").forEach((el) => { el.alt = t(el.dataset.i18nAlt); });
   document.querySelectorAll("[data-i18n-aria]").forEach((el) => { el.setAttribute("aria-label", t(el.dataset.i18nAria)); });
   document.querySelectorAll(".uilang button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.ui === UI)));
+  document.querySelectorAll(".carousel .dots button").forEach((b) => b.setAttribute("aria-label", t("car_dot") + " " + b.dataset.n));
   document.querySelectorAll("[data-etsy]").forEach((a) => {
     const url = etsyOk(ETSY[a.dataset.etsy]) ? ETSY[a.dataset.etsy] : ETSY.shop;   // Produkt-Link fehlt -> Shop
     a.href = url; a.target = "_blank"; a.rel = "noopener";
@@ -98,6 +99,49 @@ function initAbout() {
   dlg.addEventListener("close", () => opener.focus());
 }
 
+// ---------------------------------------------------------------- Bildstrecke (Karussell)
+function initCarousels() {
+  document.querySelectorAll(".carousel").forEach((car) => {
+    const track = car.querySelector(".track"), slides = [...track.children], dots = car.querySelector(".dots"), n = slides.length;
+    let target = null;                                   // Ziel waehrend des Bildlaufs (schnelle Klicks zaehlen weiter)
+    const step = () => n > 1 ? slides[1].offsetLeft - slides[0].offsetLeft : 1;
+    const pos = () => Math.min(n - 1, Math.max(0, Math.round(track.scrollLeft/Math.max(1, step()))));
+    const at = () => target ?? pos();
+    const btns = slides.map((_, i) => {
+      const b = document.createElement("button");
+      b.type = "button"; b.dataset.n = String(i + 1);
+      b.addEventListener("click", () => go(i));
+      dots.appendChild(b); return b;
+    });
+    const mark = () => {
+      if (target !== null && Math.abs(track.scrollLeft - target*step()) < 2) target = null;
+      const i = at();
+      btns.forEach((b, j) => b.setAttribute("aria-current", String(j === i)));
+      slides.forEach((f, j) => { f.classList.toggle("on", j === i); });
+    };
+    const go = (i) => { target = ((i % n) + n) % n; track.scrollTo({ left: target*step() }); mark(); };   // am Ende wieder von vorn
+    car.classList.toggle("static", n < 2);
+    car.querySelector(".prev").addEventListener("click", () => go(at() - 1));
+    car.querySelector(".next").addEventListener("click", () => go(at() + 1));
+    // Klick auf ein Nachbarbild: erst in die Mitte holen (vor der Grossansicht abfangen)
+    track.addEventListener("click", (e) => {
+      const f = e.target.closest("figure"); const i = slides.indexOf(f);
+      if (i >= 0 && i !== at()) { e.stopPropagation(); e.preventDefault(); go(i); }
+    }, true);
+    let raf = 0;
+    track.addEventListener("scroll", () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(mark); }, { passive: true });
+    track.addEventListener("pointerdown", () => { target = null; });
+    car.addEventListener("keydown", (e) => {
+      if (e.target.closest(".dots") || e.target.classList.contains("car-nav") || e.target.closest(".track")) {
+        if (e.key === "ArrowLeft") { e.preventDefault(); go(at() - 1); }
+        if (e.key === "ArrowRight") { e.preventDefault(); go(at() + 1); }
+      }
+    });
+    if ("ResizeObserver" in window) new ResizeObserver(() => { if (track.clientWidth) track.scrollTo({ left: at()*step(), behavior: "instant" }); }).observe(track);
+    mark();
+  });
+}
+
 // ---------------------------------------------------------------- Grossansicht der Bilder
 function initLightbox() {
   const dlg = document.getElementById("lightbox"), big = document.getElementById("lbImg"), cap = document.getElementById("lbCap");
@@ -106,8 +150,7 @@ function initLightbox() {
     at = (i + list.length) % list.length; const img = list[at];
     big.src = img.currentSrc || img.src; big.alt = img.alt;
     big.classList.toggle("round", img.classList.contains("round"));
-    const fc = img.closest("figure") && img.closest("figure").querySelector("figcaption");
-    cap.textContent = fc ? fc.textContent : "";
+    cap.textContent = "";                              // ohne Bildunterschrift
     document.getElementById("lbPrev").hidden = document.getElementById("lbNext").hidden = list.length < 2;
   };
   const open = (img) => {
@@ -130,6 +173,7 @@ function initLightbox() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  initCarousels();
   initLightbox();
   let saved = null; try { saved = localStorage.getItem("ui"); } catch {}
   const q = new URLSearchParams(location.search).get("ui");

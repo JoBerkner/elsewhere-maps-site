@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://elsewhere-maps.com/sitemap.xml
