@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<!-- Keine fremden Quellen: Schrift, Bilder und Skripte liegen alle hier -->
+<!-- Keine fremden Quellen: Schriften, Bilder und Skripte liegen alle hier -->
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
 <title>Elsewhere Maps · World maps with a new perspective</title>
 <meta name="description" content="Elsewhere Maps: The Earth Around You, a personalized world map centered on your place, and the One Ocean Map. Designed in Germany, available on Etsy.">
@@ -13,98 +13,153 @@
 <script src="i18n.js" defer></script>
 <script src="app.js" defer></script>
 </head>
-<body>
-<header class="hero">
-  <nav class="uilang" aria-label="Language of this page" data-i18n-aria="ui_lang">
-    <button type="button" data-ui="en" lang="en">EN</button><button type="button" data-ui="de" lang="de">DE</button><button type="button" data-ui="fr" lang="fr">FR</button><button type="button" data-ui="es" lang="es">ES</button>
-  </nav>
+<body data-product="earth">
+
+<!-- ------------------------------------------------------------ Kopfleiste -->
+<header class="topbar">
+  <div class="topbar-left">
+    <button type="button" class="avatar" id="aboutOpen" aria-haspopup="dialog" data-i18n-aria="about_btn" aria-label="About me">
+      <img id="avatarImg" src="img/me.jpg" alt="" width="88" height="88">
+      <span class="initials" aria-hidden="true">JB</span>
+    </button>
+  </div>
+  <div class="topbar-right">
+    <nav class="uilang" aria-label="Language of this page" data-i18n-aria="ui_lang">
+      <button type="button" data-ui="en" lang="en">EN</button><button type="button" data-ui="de" lang="de">DE</button><button type="button" data-ui="fr" lang="fr">FR</button><button type="button" data-ui="es" lang="es">ES</button>
+    </nav>
+    <a class="btn shop" data-etsy="shop" href="https://www.etsy.com/shop/ElsewhereMaps" target="_blank" rel="noopener" data-i18n="shop_header">Visit the shop on Etsy</a>
+  </div>
+</header>
+
+<!-- ------------------------------------------------------------ Kopf mit Produktwahl -->
+<section class="hero">
+  <div class="hero-mark"><svg aria-hidden="true" focusable="false" class="mark" xmlns="http://www.w3.org/2000/svg" viewBox="11.98 16.00 76.05 68.00"><path d="M50.00 18.50 L53.40 44.33 L55.60 50.00 L50.00 50.00 Z" style="fill:var(--bg)" stroke="currentColor" stroke-width="0.9" stroke-linejoin="miter"/><path d="M50.00 81.50 L46.60 55.67 L44.40 50.00 L50.00 50.00 Z" style="fill:var(--bg)" stroke="currentColor" stroke-width="0.9" stroke-linejoin="miter"/><path d="M50.00 18.50 L46.60 44.33 L44.40 50.00 L50.00 50.00 Z" fill="currentColor" stroke="currentColor" stroke-width="0.9" stroke-linejoin="miter"/><path d="M50.00 81.50 L53.40 55.67 L55.60 50.00 L50.00 50.00 Z" fill="currentColor" stroke="currentColor" stroke-width="0.9" stroke-linejoin="miter"/><path d="M31 0V34H115V706H31V740H442V526H414L400 633Q391 705 317 705H185V421H314V548H346V260H314V387H185V35H327Q400 35 409 108L424 234H452V0Z" fill="currentColor" transform="translate(14.476 68.000) scale(0.04865 -0.04865)"/><path d="M136 0 39 706H-21V740H153V706H104L174 197L238 591L218 740H283L358 197L441 706H398V740H524V706H474L358 0H320L254 481L174 0Z" fill="currentColor" transform="translate(61.200 68.000) scale(0.04865 -0.04865)"/></svg></div>
   <div class="kicker" data-i18n="kicker">Map design from Germany</div>
   <h1>Elsewhere Maps</h1>
   <div class="ornament" aria-hidden="true"><span></span><i></i><span></span></div>
   <p class="tagline" data-i18n="tagline">World maps that show the Earth from a new perspective: centered on your place, or on the one ocean that connects us all.</p>
-  <div class="hero-links">
-    <a class="btn" href="#earth" data-i18n="cta_earth">The Earth Around You</a>
-    <a class="btn ghost" href="#ocean" data-i18n="cta_ocean">One Ocean Map</a>
+  <div class="tabs" role="tablist" aria-label="Choose a map" data-i18n-aria="tabs_label">
+    <button type="button" role="tab" id="tab-earth" aria-controls="panel-earth" data-tab="earth" aria-selected="true">The Earth Around You</button>
+    <button type="button" role="tab" id="tab-ocean" aria-controls="panel-ocean" data-tab="ocean" aria-selected="false" tabindex="-1">One Ocean Map</button>
   </div>
-</header>
+</section>
 
 <main>
   <!-- ------------------------------------------------------------ The Earth Around You -->
-  <section id="earth" class="product">
-    <div class="product-media">
-      <img src="img/earth_poster.jpg" width="1200" height="1200" alt="Round world map centered on Munich: the whole Earth drawn around one point, with distance rings and city labels" data-i18n-alt="earth_alt" loading="lazy">
-    </div>
-    <div class="product-text">
-      <div class="kicker" data-i18n="earth_kicker">Personalized world map</div>
-      <h2>The Earth Around You</h2>
-      <p class="lead" data-i18n="earth_lead">The whole world, drawn around one single point: yours.</p>
-      <p data-i18n="earth_p1">The map uses the azimuthal equidistant projection. Every straight line from the center is the shortest route around the globe, and every distance from the center is true. Rings mark 1,000 to 15,000 kilometers or miles.</p>
-      <p data-i18n="earth_p2">You choose the center (any city or any point on Earth), the title, one of 14 languages, kilometers or miles, extra cities and up to 8 special places, such as where you met or were born.</p>
-      <ul class="facts">
-        <li data-i18n="earth_f1">Round poster or round aluminum, 70 or 80 cm (28″ or 32″ in the US)</li>
-        <li data-i18n="earth_f2">Square poster, unframed or in a black wooden frame, 70 × 70 or 80 × 80 cm</li>
-        <li data-i18n="earth_f3">Designed individually for you, with a preview before printing</li>
+  <div id="panel-earth" class="panel" role="tabpanel" aria-labelledby="tab-earth" data-for="earth">
+    <section class="product">
+      <div class="product-media">
+        <img src="img/earth_poster.jpg" width="1200" height="1200" alt="Round world map centered on Munich: the whole Earth drawn around one point, with distance rings and city labels" data-i18n-alt="earth_alt">
+      </div>
+      <div class="product-text">
+        <div class="kicker" data-i18n="earth_kicker">Personalized world map</div>
+        <h2>The Earth Around You</h2>
+        <p class="lead" data-i18n="earth_lead">The whole world, drawn around one single point: yours.</p>
+        <p data-i18n="earth_p1">The map uses the azimuthal equidistant projection.</p>
+        <p data-i18n="earth_p2">You choose the center.</p>
+        <ul class="facts">
+          <li data-i18n="earth_f1">Round poster or round aluminum</li>
+          <li data-i18n="earth_f2">Square poster</li>
+          <li data-i18n="earth_f3">Designed individually for you</li>
+        </ul>
+        <a class="btn etsy" data-etsy="earthAroundYou" href="https://www.etsy.com/shop/ElsewhereMaps" target="_blank" rel="noopener" data-i18n="shop_etsy">Shop on Etsy</a>
+      </div>
+    </section>
+
+    <section class="gallery" aria-label="Pictures of The Earth Around You" data-i18n-aria="gallery_earth">
+      <figure><img src="img/earth_closeup.jpg" width="1600" height="1600" alt="" data-i18n-alt="g1_alt" loading="lazy"><figcaption data-i18n="g1"></figcaption></figure>
+      <figure><img src="img/earth_projection.jpg" width="1600" height="1600" alt="" data-i18n-alt="g2_alt" loading="lazy"><figcaption data-i18n="g2"></figcaption></figure>
+      <figure><img src="img/earth_other_maps.jpg" width="1600" height="1600" alt="" data-i18n-alt="g3_alt" loading="lazy"><figcaption data-i18n="g3"></figcaption></figure>
+      <figure><img src="img/earth_variants.jpg" width="1600" height="1600" alt="" data-i18n-alt="g4_alt" loading="lazy"><figcaption data-i18n="g4"></figcaption></figure>
+    </section>
+
+    <section class="card steps" aria-labelledby="steps-h">
+      <h2 id="steps-h" data-i18n="steps_h">How personalization works</h2>
+      <div class="ornament" aria-hidden="true"><span></span><i></i><span></span></div>
+      <ol>
+        <li><span class="n">1</span><h3 data-i18n="s1_h"></h3><p data-i18n="s1_p"></p></li>
+        <li><span class="n">2</span><h3 data-i18n="s2_h"></h3><p data-i18n="s2_p"></p></li>
+        <li><span class="n">3</span><h3 data-i18n="s3_h"></h3><p data-i18n="s3_p"></p></li>
+      </ol>
+    </section>
+  </div>
+
+  <!-- ------------------------------------------------------------ One Ocean Map -->
+  <div id="panel-ocean" class="panel" role="tabpanel" aria-labelledby="tab-ocean" data-for="ocean" hidden>
+    <section class="product">
+      <div class="product-media">
+        <img src="img/ocean_mockup.jpg" width="800" height="1200" alt="" data-i18n-alt="ocean_alt">
+      </div>
+      <div class="product-text">
+        <div class="kicker" data-i18n="ocean_kicker">Poster</div>
+        <div class="ocean-label" role="img" aria-label="One Ocean"><img src="img/ocean_title_text_light.svg" alt=""><img class="ocean-label-wave" src="img/ocean_waves_light.svg" alt=""></div>
+        <h2 class="visually-hidden">One Ocean Map</h2>
+        <p class="lead" data-i18n="ocean_lead">There is only one ocean.</p>
+        <p data-i18n="ocean_p1"></p>
+        <p data-i18n="ocean_p2"></p>
+        <a class="btn etsy" data-etsy="oneOcean" href="https://www.etsy.com/shop/ElsewhereMaps" target="_blank" rel="noopener" data-i18n="shop_etsy">Shop on Etsy</a>
+      </div>
+    </section>
+
+    <section class="gallery" aria-label="Pictures of the One Ocean Map" data-i18n-aria="gallery_ocean">
+      <figure><img src="img/ocean_closeup.jpg" width="1400" height="1400" alt="" data-i18n-alt="o1_alt" loading="lazy"><figcaption data-i18n="o1"></figcaption></figure>
+      <figure><img src="img/ocean_atlantic.jpg" width="1400" height="1400" alt="" data-i18n-alt="o2_alt" loading="lazy"><figcaption data-i18n="o2"></figcaption></figure>
+      <figure><img src="img/ocean_details.jpg" width="1400" height="1400" alt="" data-i18n-alt="o3_alt" loading="lazy"><figcaption data-i18n="o3"></figcaption></figure>
+      <figure><img src="img/ocean_room.jpg" width="1024" height="1024" alt="" data-i18n-alt="o4_alt" loading="lazy"><figcaption data-i18n="o4"></figcaption></figure>
+    </section>
+
+    <section class="card details" aria-labelledby="det-h">
+      <h2 id="det-h" data-i18n="od_h">Details</h2>
+      <div class="ornament" aria-hidden="true"><span></span><i></i><span></span></div>
+      <ul>
+        <li><h3 data-i18n="od1_h"></h3><p data-i18n="od1_p"></p></li>
+        <li><h3 data-i18n="od2_h"></h3><p data-i18n="od2_p"></p></li>
+        <li><h3 data-i18n="od3_h"></h3><p data-i18n="od3_p"></p></li>
+        <li><h3 data-i18n="od4_h"></h3><p data-i18n="od4_p"></p></li>
       </ul>
-      <a class="btn etsy" data-etsy="earthAroundYou" href="#" data-i18n="shop_etsy">Shop on Etsy</a>
-    </div>
-  </section>
+    </section>
+  </div>
 
-  <section class="gallery" aria-label="The Earth Around You" data-i18n-aria="gallery_earth">
-    <figure><img src="img/earth_closeup.jpg" width="1600" height="1600" alt="Close-up of the map: Europe, Africa and Asia with city names and distances" data-i18n-alt="g1_alt" loading="lazy"><figcaption data-i18n="g1">Every city with its true distance</figcaption></figure>
-    <figure><img src="img/earth_projection.jpg" width="1600" height="1600" alt="How the globe around Munich is unfolded into a flat round map" data-i18n-alt="g2_alt" loading="lazy"><figcaption data-i18n="g2">Unique to every place</figcaption></figure>
-    <figure><img src="img/earth_other_maps.jpg" width="1600" height="1600" alt="Comparison with an ordinary world map: shortest route and distances" data-i18n-alt="g3_alt" loading="lazy"><figcaption data-i18n="g3">What other maps get wrong</figcaption></figure>
-    <figure><img src="img/earth_variants.jpg" width="1600" height="1600" alt="Four versions: round poster, round aluminum, square poster and framed square poster" data-i18n-alt="g4_alt" loading="lazy"><figcaption data-i18n="g4">Four ways to hang it</figcaption></figure>
-  </section>
-
-  <!-- ------------------------------------------------------------ So funktioniert es -->
-  <section class="steps" aria-labelledby="steps-h">
-    <h2 id="steps-h" data-i18n="steps_h">How personalization works</h2>
-    <div class="ornament" aria-hidden="true"><span></span><i></i><span></span></div>
-    <ol>
-      <li><span class="n">1</span><h3 data-i18n="s1_h">Order on Etsy</h3><p data-i18n="s1_p">Choose the product and the size and place your order on Etsy.</p></li>
-      <li><span class="n">2</span><h3 data-i18n="s2_h">Design your map</h3><p data-i18n="s2_p">You receive a personal link via Etsy Messages. On design.elsewhere-maps.com you choose the center, language, title, cities and special places, with a live preview.</p></li>
-      <li><span class="n">3</span><h3 data-i18n="s3_h">Approve and enjoy</h3><p data-i18n="s3_p">I design your map and send you a preview. It is printed only after your approval and shipped to you.</p></li>
-    </ol>
-  </section>
-
-  <!-- ------------------------------------------------------------ One Ocean -->
-  <section id="ocean" class="product reverse">
-    <div class="product-media">
-      <img src="img/ocean_mockup.jpg" width="800" height="1200" alt="One Ocean Map poster on a wall above a desk: the world's oceans as one connected body of water, with ocean currents" data-i18n-alt="ocean_alt" loading="lazy">
-    </div>
-    <div class="product-text">
-      <div class="kicker" data-i18n="ocean_kicker">Poster</div>
-      <h2>One Ocean Map</h2>
-      <p class="lead" data-i18n="ocean_lead">There is only one ocean.</p>
-      <p data-i18n="ocean_p1">The One Ocean Map shows the world's seas the way they really are: one connected body of water. The Spilhaus projection puts the oceans at the center and the continents at the edge.</p>
-      <p data-i18n="ocean_p2">Ocean currents, depths and coastlines in fine detail make it a calm, deep-blue piece for any wall.</p>
-      <a class="btn etsy" data-etsy="oneOcean" href="#" data-i18n="shop_etsy">Shop on Etsy</a>
-    </div>
-  </section>
-  <section class="gallery two" aria-label="One Ocean Map" data-i18n-aria="gallery_ocean">
-    <figure><img src="img/ocean_closeup.jpg" width="1400" height="1400" alt="Close-up of the One Ocean Map: Southern Ocean, Australia and ocean currents" data-i18n-alt="o1_alt" loading="lazy"><figcaption data-i18n="o1">Currents and depths in fine detail</figcaption></figure>
-  </section>
-
-  <!-- ------------------------------------------------------------ Vorteile -->
-  <section class="benefits" aria-labelledby="ben-h">
+  <!-- ------------------------------------------------------------ Vorteile (beide Produkte) -->
+  <section class="card benefits" aria-labelledby="ben-h">
     <h2 id="ben-h" data-i18n="ben_h">Why Elsewhere Maps</h2>
     <div class="ornament" aria-hidden="true"><span></span><i></i><span></span></div>
     <ul>
-      <li><h3 data-i18n="b1_h">Rated 5 stars on Etsy</h3><p data-i18n="b1_p">Buyers rate the shop 5 out of 5 stars.</p></li>
-      <li><h3 data-i18n="b2_h">Best quality</h3><p data-i18n="b2_p">Premium paper or 3 mm aluminum composite, printed in sharp detail by specialist partners.</p></li>
-      <li><h3 data-i18n="b3_h">Fully personalized</h3><p data-i18n="b3_p">Your center, title, language, units, extra cities and special places.</p></li>
-      <li><h3 data-i18n="b4_h">One of a kind</h3><p data-i18n="b4_p">A map no one else has, and a real eye-catcher on your wall.</p></li>
+      <li><h3 data-i18n="b1_h"></h3><p data-i18n="b1_p"></p></li>
+      <li><h3 data-i18n="b2_h"></h3><p data-i18n="b2_p"></p></li>
+      <li data-for="earth"><h3 data-i18n="b3_h"></h3><p data-i18n="b3_p"></p></li>
+      <li data-for="ocean" hidden><h3 data-i18n="bo3_h"></h3><p data-i18n="bo3_p"></p></li>
+      <li><h3 data-i18n="b4_h"></h3><p data-i18n="b4_p"></p></li>
     </ul>
-    <a class="btn etsy" data-etsy="shop" href="#" data-i18n="visit_shop">Visit the shop on Etsy</a>
+    <a class="btn etsy" data-etsy="shop" href="https://www.etsy.com/shop/ElsewhereMaps" target="_blank" rel="noopener" data-i18n="visit_shop">Visit the shop on Etsy</a>
     <p class="note" data-i18n="etsy_note">All orders are placed and paid on Etsy.</p>
   </section>
 </main>
 
 <footer>
   <span>Map Design © 2026 Joseph Berkner</span>
+  <a data-etsy="shop" href="https://www.etsy.com/shop/ElsewhereMaps" target="_blank" rel="noopener" data-i18n="footer_shop">Etsy shop</a>
   <a href="https://design.elsewhere-maps.com/imprint.html" data-i18n="imprint">Imprint</a>
   <a href="https://design.elsewhere-maps.com/privacy.html" data-i18n="privacy">Privacy</a>
   <span class="small" data-i18n="etsy_tm">Etsy is a trademark of Etsy, Inc. This site is not affiliated with or endorsed by Etsy.</span>
 </footer>
+
+<!-- ------------------------------------------------------------ Ueber mich -->
+<dialog id="lightbox" aria-label="Picture" data-i18n-aria="lb_label">
+  <button type="button" class="close" id="lbClose" data-i18n-aria="about_close" aria-label="Close">×</button>
+  <button type="button" class="lb-nav prev" id="lbPrev" data-i18n-aria="lb_prev" aria-label="Previous picture">‹</button>
+  <figure><img id="lbImg" src="" alt=""><figcaption id="lbCap"></figcaption></figure>
+  <button type="button" class="lb-nav next" id="lbNext" data-i18n-aria="lb_next" aria-label="Next picture">›</button>
+</dialog>
+<dialog id="about" aria-labelledby="about-h">
+  <div class="about-inner">
+    <button type="button" class="close" id="aboutClose" data-i18n-aria="about_close" aria-label="Close">×</button>
+    <div class="about-photo avatar static" aria-hidden="true"><img id="aboutImg" src="img/me.jpg" alt="" width="160" height="160"><span class="initials">JB</span></div>
+    <h2 id="about-h" data-i18n="about_h">About me</h2>
+    <p data-i18n="about_p1"></p>
+    <p data-i18n="about_p2"></p>
+    <a class="btn" data-etsy="shop" href="https://www.etsy.com/shop/ElsewhereMaps" target="_blank" rel="noopener" data-i18n="visit_shop">Visit the shop on Etsy</a>
+  </div>
+</dialog>
 </body>
 </html>

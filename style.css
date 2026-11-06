@@ -1,84 +1,169 @@
-/* Look wie das Bestelltool: cremefarbener Grund, dunkle Tinte, Federo fuer Ueberschriften */
+/* Marketingseite Elsewhere Maps. Zwei Looks, gesteuert ueber body[data-product]:
+   earth = wie The Earth Around You (Creme, Tinte, Federo), ocean = wie die One Ocean Map
+   (Tiefseeblau, Cyan und Korallrot der Stroemungen, Crimson Text). */
 @font-face { font-family: "Federo SZ"; src: url("federo.ttf") format("truetype"); font-display: swap; }
+@font-face { font-family: "Crimson Text"; src: url("fonts/CrimsonText-Regular.ttf") format("truetype"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Crimson Text"; src: url("fonts/CrimsonText-SemiBold.ttf") format("truetype"); font-weight: 600; font-display: swap; }
+@font-face { font-family: "Crimson Text"; src: url("fonts/CrimsonText-Italic.ttf") format("truetype"); font-weight: 400; font-style: italic; font-display: swap; }
 
-:root {
-  --bg: #f3efe6; --card: #fbf9f4; --ink: #182434; --muted: #5c6570; --line: #d9d2c3; --soft: #ebe5d8;
-  --head: "Federo SZ", "Federo", Georgia, serif;
+:root, body[data-product="earth"] {
+  --bg: #f3efe6; --card: #fbf9f4; --ink: #182434; --muted: #545d68; --line: #d9d2c3; --soft: #ebe5d8;
+  --accent: #182434; --accent-ink: #f3efe6; --kicker: #545d68; --focus: #1a58a0;
+  --shadow: rgba(24,36,52,.12);
+  --head: "Federo SZ", "Federo", Georgia, serif; --head-case: uppercase; --head-track: .14em; --head-weight: 400;
   --body: "Avenir Next", "Avenir", "Segoe UI", "Helvetica Neue", system-ui, sans-serif;
+  --lead-font: var(--body);
+}
+body[data-product="ocean"] {
+  --bg: #0b3f6e; --card: #124f86; --ink: #f2f6fa; --muted: #c3d5e6; --line: rgba(231,238,244,.22); --soft: rgba(231,238,244,.12);
+  --accent: #3a99cf; --accent-ink: #062440; --kicker: #f4a3bd; --focus: #f4a3bd;
+  --shadow: rgba(0,10,25,.45);
+  --head: "Crimson Text", Georgia, serif; --head-case: none; --head-track: .01em; --head-weight: 600;
+  --lead-font: "Crimson Text", Georgia, serif;
 }
 * { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
-body { margin: 0; background: var(--bg); color: var(--ink); font: 17px/1.6 var(--body); }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 17px/1.6 var(--body); transition: background-color .45s ease, color .45s ease; overflow-x: hidden; }
+body[data-product="ocean"] { background: radial-gradient(ellipse 120% 700px at 50% 0, #195f97 0%, #0b3f6e 100%) no-repeat, #0b3f6e; }
 img { max-width: 100%; height: auto; display: block; }
 a { color: var(--ink); }
-h1, h2, h3 { font-family: var(--head); font-weight: 400; text-transform: uppercase; }
-h2 { letter-spacing: .14em; font-size: clamp(26px, 4.4vw, 40px); line-height: 1.15; margin: 6px 0 14px; }
-h3 { letter-spacing: .12em; font-size: 18px; margin: 10px 0 6px; }
-.kicker { font-family: var(--head); letter-spacing: .3em; text-transform: uppercase; color: var(--muted); font-size: 14px; }
+h1, h2, h3 { font-family: var(--head); font-weight: var(--head-weight); text-transform: var(--head-case); }
+h2 { letter-spacing: var(--head-track); font-size: clamp(26px, 4.4vw, 40px); line-height: 1.15; margin: 6px 0 14px; }
+body[data-product="ocean"] h2 { font-size: clamp(30px, 5vw, 46px); }
+h3 { letter-spacing: calc(var(--head-track) * .85); font-size: 18px; margin: 10px 0 6px; }
+body[data-product="ocean"] h3 { font-size: 22px; }
+.kicker { font-family: var(--head); letter-spacing: .3em; text-transform: uppercase; color: var(--kicker); font-size: 14px; }
+body[data-product="ocean"] .kicker { letter-spacing: .22em; font-weight: 600; }
 
+/* Ornament: Linie mit Pluszeichen (earth) bzw. sanfter Welle (ocean) */
 .ornament { display: flex; align-items: center; justify-content: center; height: 18px; margin: 10px 0; }
 .ornament span { width: 110px; height: 1px; background: var(--ink); }
 .ornament i { position: relative; width: 36px; height: 18px; }
 .ornament i::before, .ornament i::after { content: ""; position: absolute; background: var(--ink); }
 .ornament i::before { left: 10px; right: 10px; top: 8px; height: 2px; }
 .ornament i::after { top: 1px; bottom: 1px; left: 17px; width: 2px; }
+body[data-product="ocean"] .ornament span, body[data-product="ocean"] .ornament i { display: none; }
+body[data-product="ocean"] .ornament { width: 280px; height: 30px; margin: 10px auto;
+  background: url("img/ocean_waves_light.svg") center / contain no-repeat; }   /* Wellen aus dem Titel der One Ocean Map */
 
-.btn { display: inline-block; font: inherit; font-weight: 600; letter-spacing: .04em; text-decoration: none; border: 1px solid var(--ink);
-  border-radius: 999px; background: var(--ink); color: var(--bg); padding: 12px 26px; }
-.btn:hover { background: #0f1824; }
-.btn.ghost { background: transparent; color: var(--ink); }
-.btn.ghost:hover { background: var(--soft); }
-.btn:focus-visible, .uilang button:focus-visible { outline: 3px solid #1a58a0; outline-offset: 3px; }
+.btn { display: inline-block; font: inherit; font-weight: 600; letter-spacing: .04em; text-decoration: none; border: 1px solid var(--accent);
+  border-radius: 999px; background: var(--accent); color: var(--accent-ink); padding: 12px 26px; transition: background-color .3s, color .3s, border-color .3s, filter .2s; }
+.btn:hover { filter: brightness(1.12); }
+.btn.ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
 
-/* Kopf */
-.hero { position: relative; text-align: center; padding: 72px 16px 56px; max-width: 1120px; margin: 0 auto; }
-.hero h1 { letter-spacing: .14em; font-size: clamp(38px, 8vw, 72px); margin: 12px 0 8px; line-height: 1.05; }
-.tagline { color: var(--muted); font-size: clamp(17px, 2.2vw, 20px); max-width: 640px; margin: 16px auto 26px; }
-.hero-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-.uilang { position: absolute; top: 16px; right: 16px; display: flex; gap: 2px; background: var(--soft); border-radius: 999px; padding: 3px; }
+/* Kopfleiste */
+.topbar { max-width: 1120px; margin: 0 auto; padding: 16px; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.topbar-left, .topbar-right { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.brand { font-family: var(--head); text-transform: var(--head-case); letter-spacing: .2em; font-size: 15px; text-decoration: none; color: var(--ink); white-space: nowrap; }
+body[data-product="ocean"] .brand { letter-spacing: .06em; font-size: 20px; font-weight: 600; }
+.brand { display: inline-flex; align-items: center; gap: 10px; }
+.brand svg.mark { display: block; height: 38px; width: auto; color: var(--ink); }
+.avatar { position: relative; width: 44px; height: 44px; border-radius: 50%; padding: 0; border: 2px solid var(--accent); background: var(--soft); overflow: hidden; cursor: pointer; flex: none; }
+.avatar img { width: 100%; height: 100%; object-fit: cover; }
+.avatar .initials { position: absolute; inset: 0; display: none; place-items: center; font-weight: 700; font-size: 15px; letter-spacing: .04em; color: var(--ink); }
+.avatar.noimg img { display: none; }
+.avatar.noimg .initials { display: grid; }
+.avatar.static { cursor: default; }
+.uilang { display: flex; gap: 2px; background: var(--soft); border-radius: 999px; padding: 3px; }
 .uilang button { font: inherit; font-size: 13px; font-weight: 600; letter-spacing: .06em; border: 0; background: none; color: var(--muted); padding: 5px 10px; border-radius: 999px; cursor: pointer; }
 .uilang button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.btn.shop { padding: 10px 20px; font-size: 15px; }
+
+/* Kopf mit Produktwahl */
+.hero { text-align: center; padding: 28px 16px 36px; max-width: 1120px; margin: 0 auto; }
+.hero h1 { letter-spacing: .14em; font-size: clamp(36px, 8vw, 72px); margin: 12px 0 8px; line-height: 1.05; }
+body[data-product="ocean"] .hero h1 { letter-spacing: .04em; }
+.tagline { color: var(--muted); font-size: clamp(17px, 2.2vw, 20px); max-width: 640px; margin: 16px auto 26px; }
+.tabs { display: inline-flex; flex-wrap: wrap; justify-content: center; gap: 4px; background: var(--soft); border-radius: 999px; padding: 5px; }
+.tabs [role="tab"] { font: inherit; font-weight: 600; font-size: 16px; letter-spacing: .03em; border: 0; border-radius: 999px; background: none; color: var(--muted); padding: 10px 22px; cursor: pointer; transition: background-color .3s, color .3s; }
+.tabs [role="tab"][aria-selected="true"] { background: var(--accent); color: var(--accent-ink); }
 
 main { max-width: 1120px; margin: 0 auto; padding: 0 16px 40px; }
+.panel { transition: opacity .35s ease; }
+.panel.fading { opacity: 0; }
 
 /* Produkte */
-.product { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; padding: 48px 0; scroll-margin-top: 16px; }
-.product.reverse .product-media { order: 2; }
-.product-media img { border-radius: 18px; box-shadow: 0 2px 4px rgba(24,36,52,.06), 0 18px 40px rgba(24,36,52,.12); }
-.product .lead { font-size: 20px; color: var(--ink); font-weight: 500; margin: 0 0 12px; }
+.product { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; padding: 28px 0 40px; }
+.product-media img { border-radius: 18px; box-shadow: 0 2px 4px var(--shadow), 0 18px 40px var(--shadow); }
+body[data-product="ocean"] .product-media img { max-height: 760px; width: auto; margin: 0 auto; }
+.product .lead { font-family: var(--lead-font); font-size: 21px; color: var(--ink); font-weight: 500; margin: 0 0 12px; }
+body[data-product="ocean"] .product .lead { font-size: 26px; font-style: italic; font-weight: 400; }
 .product p { color: var(--muted); margin: 0 0 12px; }
 .facts { list-style: none; padding: 0; margin: 16px 0 24px; }
 .facts li { position: relative; padding: 6px 0 6px 28px; border-top: 1px solid var(--soft); }
 .facts li::before { content: "+"; position: absolute; left: 4px; top: 3px; font-family: var(--head); font-size: 20px; }
 
 .gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; padding: 8px 0 40px; }
-.gallery.two { grid-template-columns: minmax(0, 380px); justify-content: center; }
+.gallery.two { grid-template-columns: minmax(0, 420px); justify-content: center; }
 .gallery figure { margin: 0; }
-.gallery img { border-radius: 14px; box-shadow: 0 6px 18px rgba(24,36,52,.10); }
+.gallery img { border-radius: 14px; box-shadow: 0 6px 18px var(--shadow); }
 .gallery figcaption { font-size: 14px; color: var(--muted); text-align: center; margin-top: 8px; }
 
-/* Schritte und Vorteile */
-.steps, .benefits { text-align: center; background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 40px 28px; margin: 24px 0 40px; }
-.steps ol, .benefits ul { list-style: none; padding: 0; margin: 20px 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
-.benefits ul { grid-template-columns: repeat(4, 1fr); margin-bottom: 28px; }
-.steps p, .benefits p { color: var(--muted); font-size: 15px; margin: 0; }
+/* Karten: Schritte, Details, Vorteile */
+.card { text-align: center; background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 40px 28px; margin: 24px 0 40px; transition: background-color .45s, border-color .45s; }
+.card ol, .card ul { list-style: none; padding: 0; margin: 20px 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.details ul, .benefits ul { grid-template-columns: repeat(4, 1fr); }
+.benefits ul { margin-bottom: 28px; }
+.card p { color: var(--muted); font-size: 15px; margin: 0; }
+body[data-product="ocean"] .card p { font-size: 16px; }
 .n { display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid var(--ink); font-weight: 600; }
 .note { color: var(--muted); font-size: 14px; margin: 12px 0 0; }
+.todo { border: 1px dashed var(--kicker); border-radius: 6px; padding: 0 4px; }
 
 footer { max-width: 1120px; margin: 0 auto; padding: 8px 16px 48px; display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: center; color: var(--muted); font-size: 13px; }
 footer a { color: var(--muted); }
 footer .small { flex-basis: 100%; text-align: center; }
 
+/* Ueber mich */
+dialog#about { border: 1px solid var(--line); border-radius: 22px; background: var(--card); color: var(--ink); padding: 0; width: min(520px, calc(100vw - 32px)); max-height: calc(100vh - 32px); box-shadow: 0 30px 80px rgba(0,0,0,.35); }
+dialog#about::backdrop { background: rgba(8,20,35,.55); }
+.about-inner { position: relative; padding: 36px 28px 28px; text-align: center; }
+.about-inner p { color: var(--muted); margin: 0 0 12px; }
+.about-inner .btn { margin-top: 8px; }
+.about-photo { width: 120px; height: 120px; margin: 0 auto 8px; }
+.about-photo .initials { font-size: 34px; }
+.close { position: absolute; top: 10px; right: 10px; width: 40px; height: 40px; border: 0; border-radius: 50%; background: var(--soft); color: var(--ink); font-size: 24px; line-height: 1; cursor: pointer; }
+
+[hidden] { display: none !important; }
+
 @media (max-width: 900px) {
-  .product { grid-template-columns: 1fr; gap: 24px; padding: 32px 0; }
-  .product.reverse .product-media { order: 0; }
+  .product { grid-template-columns: 1fr; gap: 24px; padding: 20px 0 32px; }
   .gallery { grid-template-columns: 1fr 1fr; }
-  .benefits ul { grid-template-columns: 1fr 1fr; }
+  .details ul, .benefits ul { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 600px) {
-  .hero { padding-top: 72px; }
-  .steps ol, .benefits ul { grid-template-columns: 1fr; }
-  .steps, .benefits { padding: 28px 16px; }
+  .topbar { justify-content: center; }
+  .topbar-left, .topbar-right { justify-content: center; }
+  .card ol, .card ul, .details ul, .benefits ul { grid-template-columns: 1fr; }
+  .card { padding: 28px 16px; }
   .gallery { gap: 10px; }
+  .tabs [role="tab"] { padding: 9px 14px; font-size: 15px; }
 }
-.btn.soon { background: var(--soft); color: var(--muted); border-color: var(--line); cursor: default; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; }
+}
+
+/* Titel der One Ocean Map wie auf dem Poster, fuer den dunklen Grund mit heller Schrift (Schrift: img/ocean_title_text_light.svg aus logo/make_ocean_title.py, Welle: img/ocean_waves_light.svg aus logo/make_wave.py) */
+.ocean-label { display: block; margin: 4px 0 14px; }
+.ocean-label img { width: min(250px, 62vw); height: auto; display: block; }
+.ocean-label .ocean-label-wave { width: min(270px, 66vw); margin: 2px 0 0 -10px; }
+.visually-hidden { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Grossansicht der Bilder */
+.zoomable { cursor: zoom-in; }
+dialog#lightbox { border: 0; padding: 0; background: transparent; max-width: none; max-height: none; width: 100vw; height: 100vh; margin: 0; overflow: hidden; }
+dialog#lightbox[open] { display: grid; place-items: center; }
+dialog#lightbox::backdrop { background: rgba(6,14,24,.88); }
+dialog#lightbox figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 10px; max-width: calc(100vw - 120px); }
+dialog#lightbox img { max-width: calc(100vw - 120px); max-height: calc(100vh - 110px); width: auto; height: auto; border-radius: 10px; box-shadow: 0 20px 60px rgba(0,0,0,.5); }
+dialog#lightbox figcaption { color: #e7eef4; font-size: 15px; text-align: center; }
+dialog#lightbox .close { position: fixed; top: 16px; right: 16px; }
+.lb-nav { position: fixed; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 50%; border: 0;
+  background: rgba(255,255,255,.14); color: #fff; font-size: 32px; line-height: 1; cursor: pointer; }
+.lb-nav:hover, .lb-nav:focus-visible { background: rgba(255,255,255,.28); }
+.lb-nav.prev { left: 16px; } .lb-nav.next { right: 16px; }
+@media (max-width: 600px) { dialog#lightbox figure, dialog#lightbox img { max-width: calc(100vw - 32px); } .lb-nav { top: auto; bottom: 18px; transform: none; } }
+.hero-mark { display: flex; justify-content: center; margin: 0 0 14px; }
+.hero-mark svg.mark { height: 72px; width: auto; color: var(--ink); }
+@media (max-width: 600px) { .hero-mark svg.mark { height: 56px; } }

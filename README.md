@@ -12,7 +12,7 @@ Ganz oben in `app.js`:
 const ETSY = { shop: "", earthAroundYou: "", oneOcean: "" };
 ```
 
-Am besten die **Share-&-Save-Links** aus dem Etsy Shop Manager (Marketing → Share & Save) nehmen, dann erstattet Etsy einen Teil der Gebühren. Erlaubt sind nur Adressen, die mit `https://www.etsy.com/` oder `https://etsy.com/` beginnen. Leere Links erscheinen als ausgegrauter Knopf „Coming soon on Etsy“.
+Am besten die **Share-&-Save-Links** aus dem Etsy Shop Manager (Marketing → Share & Save) nehmen, dann erstattet Etsy einen Teil der Gebühren. Erlaubt sind nur Adressen, die mit `https://www.etsy.com/` oder `https://etsy.com/` beginnen. Der Shop-Link (`https://www.etsy.com/shop/ElsewhereMaps`) ist eingetragen; leere Produkt-Links führen vorerst auf den Shop. Ein eigenes Foto für „Über mich“ als `img/me.jpg` ablegen (quadratisch, etwa 400 × 400 px), sonst erscheinen die Initialen „JB“. Das Logo kommt in den markierten Platz `<a class="brand">` in `index.html`.
 
 ## Veröffentlichen (GitHub Pages)
 
