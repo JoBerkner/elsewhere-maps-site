@@ -108,7 +108,7 @@ body[data-product="ocean"] .product .lead { font-size: 26px; font-style: italic;
 .card p { color: var(--muted); font-size: 15px; margin: 0; }
 body[data-product="ocean"] .card p { font-size: 16px; }
 .n { display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid var(--ink); font-weight: 600; }
-.note { color: var(--muted); font-size: 14px; margin: 12px 0 0; }
+.note, .card .note { color: var(--muted); font-size: 14px; margin: 22px 0 0; }   /* .card p setzt sonst margin 0 */
 .todo { border: 1px dashed var(--kicker); border-radius: 6px; padding: 0 4px; }
 
 footer { max-width: 1120px; margin: 0 auto; padding: 8px 16px 48px; display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: center; color: var(--muted); font-size: 13px; }
@@ -169,3 +169,16 @@ dialog#lightbox .close { position: fixed; top: 16px; right: 16px; }
 @media (max-width: 600px) { .hero-mark svg.mark { height: 56px; } }
 .product-media img.round { border-radius: 50%; }   /* rundes Poster wie geschnitten */
 dialog#lightbox img.round { border-radius: 50%; }
+
+/* Handschriftlicher Hinweis am Profilfoto */
+@font-face { font-family: "Caveat"; src: url("fonts/Caveat.ttf") format("truetype"); font-weight: 400 700; font-display: swap; }
+:root { --hand: #a8322b; }
+body[data-product="ocean"] { --hand: #f4a3bf; }
+.thats-me { display: inline-flex; align-items: flex-start; height: 44px; margin-left: 2px; color: var(--hand); pointer-events: none; }
+/* Pfeil so hoch wie das Foto (44 px): die Spitze liegt genau auf halber Hoehe, also auf der Mitte des Fotos */
+.hand-arrow { width: 54px; height: 44px; flex: none; }
+.hand-arrow path { stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.thats-me .hand { font-family: "Caveat", "Bradley Hand", cursive; font-weight: 600; font-size: 22px; line-height: 1; white-space: nowrap; align-self: flex-end; margin: 0 0 -6px 2px; transform: rotate(-5deg); }
+@media (max-width: 600px) { .hand-arrow { width: 44px; } .thats-me .hand { font-size: 20px; } }
+.footer-mark { flex-basis: 100%; display: flex; justify-content: center; margin-bottom: 6px; }
+.footer-mark svg.mark { height: 30px; width: auto; color: var(--muted); }
