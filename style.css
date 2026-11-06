@@ -167,3 +167,5 @@ dialog#lightbox .close { position: fixed; top: 16px; right: 16px; }
 .hero-mark { display: flex; justify-content: center; margin: 0 0 14px; }
 .hero-mark svg.mark { height: 72px; width: auto; color: var(--ink); }
 @media (max-width: 600px) { .hero-mark svg.mark { height: 56px; } }
+.product-media img.round { border-radius: 50%; }   /* rundes Poster wie geschnitten */
+dialog#lightbox img.round { border-radius: 50%; }

@@ -105,6 +105,7 @@ function initLightbox() {
   const show = (i) => {
     at = (i + list.length) % list.length; const img = list[at];
     big.src = img.currentSrc || img.src; big.alt = img.alt;
+    big.classList.toggle("round", img.classList.contains("round"));
     const fc = img.closest("figure") && img.closest("figure").querySelector("figcaption");
     cap.textContent = fc ? fc.textContent : "";
     document.getElementById("lbPrev").hidden = document.getElementById("lbNext").hidden = list.length < 2;
