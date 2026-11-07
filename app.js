@@ -8,8 +8,8 @@
 // Leere Produkt-Links fuehren vorerst auf den Shop.
 const ETSY = {
   shop: "https://elsewheremaps.etsy.com",   // Share-&-Save-Link (Etsy erstattet einen Teil der Gebuehren)
-  earthAroundYou: "",  // Anzeige The Earth Around You (bzw. eine Kollektion mit allen vier Anzeigen)
-  oneOcean: "",        // Anzeige One Ocean Map
+  earthAroundYou: "",  // leer = Shop (bewusst: je nach Land passen andere Anzeigen - Poster EU, Alu USA ...)
+  oneOcean: "",        // leer = Shop (bewusst: Shop-Link zählt für Share & Save genauso)
 };
 const PRODUCTS = ["earth", "ocean"];
 

@@ -269,3 +269,9 @@ window.UI_STRINGS = {
     bo3_h: "Una perspectiva única", bo3_p: "Una vista de nuestro planeta que ningún mapa del mundo habitual muestra.",
   },
 };
+
+// Produktwahl im Kopf
+Object.assign(window.UI_STRINGS.en, { tabs_kicker: "My products", tab_ocean_sub: "All oceans as one" });
+Object.assign(window.UI_STRINGS.de, { tabs_kicker: "Meine Produkte", tab_ocean_sub: "Alle Meere als ein Ozean" });
+Object.assign(window.UI_STRINGS.fr, { tabs_kicker: "Mes produits", tab_ocean_sub: "Tous les océans en un seul" });
+Object.assign(window.UI_STRINGS.es, { tabs_kicker: "Mis productos", tab_ocean_sub: "Todos los océanos en uno" });
