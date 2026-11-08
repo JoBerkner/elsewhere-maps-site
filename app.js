@@ -9,6 +9,7 @@
 const ETSY = {
   shop: "https://elsewheremaps.etsy.com",   // Share-&-Save-Link (Etsy erstattet einen Teil der Gebuehren)
   earthAroundYou: "",  // leer = Shop (bewusst: je nach Land passen andere Anzeigen - Poster EU, Alu USA ...)
+  earthDigital: "",    // Link zur Anzeige "Digital Download" eintragen, sobald sie online ist (leer = Shop)
   oneOcean: "",        // leer = Shop (bewusst: Shop-Link zählt für Share & Save genauso)
 };
 const PRODUCTS = ["earth", "ocean"];
