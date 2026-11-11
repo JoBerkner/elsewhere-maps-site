@@ -106,6 +106,10 @@ body[data-product="ocean"] .product .lead { font-size: 26px; font-style: italic;
 
 /* Bildstrecke: ein grosses Bild in der Mitte, die Nachbarn ragen links und rechts blass herein;
    Pfeile, Punkte, Wischen per Scroll-Snap, Klick auf ein Nachbarbild holt es in die Mitte */
+/* Film: laeuft stumm in Schleife, sobald er sichtbar ist (Ton ueber die Steuerung) */
+.film { text-align: center; padding: 8px 0 72px; }
+.gallery-h { text-align: center; margin: 0 0 22px; font-weight: inherit; }
+.film video { display: block; width: min(620px, 100%); height: auto; margin: 0 auto; border-radius: 14px; box-shadow: 0 6px 18px var(--shadow); background: var(--soft); }
 .carousel { --w: min(620px, 70cqw); --gap: 28px; container-type: inline-size; position: relative; padding: 8px 0 40px; }
 .carousel .track { display: flex; gap: var(--gap); overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none;
   padding: 6px calc((100cqw - var(--w))/2) 22px;

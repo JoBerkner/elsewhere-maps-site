@@ -100,6 +100,19 @@ function initAbout() {
   dlg.addEventListener("close", () => opener.focus());
 }
 
+// ---------------------------------------------------------------- Film: stumm abspielen, solange er sichtbar ist
+function initFilm() {
+  const v = document.querySelector(".film video");
+  if (!v || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;   // dann nur auf Klick
+  let userPaused = false;
+  v.addEventListener("pause", () => { if (!v.dataset.auto) userPaused = true; delete v.dataset.auto; });
+  v.addEventListener("play", () => { userPaused = false; });
+  new IntersectionObserver((es) => es.forEach((e) => {
+    if (e.isIntersecting && !userPaused) v.play().catch(() => {});
+    else if (!e.isIntersecting && !v.paused) { v.dataset.auto = "1"; v.pause(); }
+  }), { threshold: 0.4 }).observe(v);
+}
+
 // ---------------------------------------------------------------- Bildstrecke (Karussell)
 function initCarousels() {
   document.querySelectorAll(".carousel").forEach((car) => {
@@ -175,6 +188,7 @@ function initLightbox() {
 
 document.addEventListener("DOMContentLoaded", () => {
   initCarousels();
+  initFilm();
   initLightbox();
   let saved = null; try { saved = localStorage.getItem("ui"); } catch {}
   const q = new URLSearchParams(location.search).get("ui");
