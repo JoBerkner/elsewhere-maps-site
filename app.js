@@ -9,7 +9,13 @@
 const ETSY = {
   shop: "https://elsewheremaps.etsy.com",   // Share-&-Save-Link (Etsy erstattet einen Teil der Gebuehren)
   earthAroundYou: "",  // leer = Shop (bewusst: je nach Land passen andere Anzeigen - Poster EU, Alu USA ...)
-  earthDigital: "",    // Link zur Anzeige "Digital Download" eintragen, sobald sie online ist (leer = Shop)
+  earthDigital: "https://elsewheremaps.etsy.com/listing/4612820786/the-earth-around-you-personalized-world",    // Anzeige "Digital Download"
+  // Abschnitt "Pick your map" (eine Zeile je Anzeige, ohne Preise, da sie je Region schwanken; leer = Shop;
+  // Links ohne Sprachteil wie "/de-en/", dann zeigt Etsy jedem Besucher seine eigene Sprache und Waehrung)
+  earthRoundPoster: "https://elsewheremaps.etsy.com/listing/4611142491/the-earth-around-you-round-poster-of",  // Round Poster (EU, myposter)
+  earthAluEU: "https://elsewheremaps.etsy.com/listing/4611145681/the-earth-around-you-round-aluminum-wall",        // Round Aluminum (EU, myposter)
+  earthAluUS: "https://elsewheremaps.etsy.com/listing/4611167706/the-earth-around-you-round-metal-wall",        // Round Aluminum (USA, Square Signs)
+  earthSquare: "https://elsewheremaps.etsy.com/listing/4611210004/the-earth-around-you-square-poster-of",       // Square Poster (weltweit, Gelato)
   oneOcean: "",        // leer = Shop (bewusst: Shop-Link zählt für Share & Save genauso)
 };
 const PRODUCTS = ["earth", "ocean"];

@@ -163,6 +163,45 @@ dialog#about::backdrop { background: rgba(8,20,35,.55); }
 .about-photo .initials { font-size: 34px; }
 .close { position: absolute; top: 10px; right: 10px; width: 40px; height: 40px; border: 0; border-radius: 50%; background: var(--soft); color: var(--ink); font-size: 24px; line-height: 1; cursor: pointer; }
 
+/* Abschnitt "Pick your map": eine Zeile je Etsy-Anzeige, nach Form gruppiert, ohne Preise */
+.versions { text-align: center; padding: 8px 0 56px; }
+.versions h2 { margin: 6px 0 28px; }
+.v-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; text-align: left; }
+.v-group { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 28px 24px 12px; }
+/* Kopf und Liste als gemeinsame Zeilen aller Kaesten: die erste Linie steht ueberall auf gleicher Hoehe */
+@supports (grid-template-rows: subgrid) {
+  .v-grid { grid-template-rows: auto auto; }
+  .v-group { display: grid; grid-row: span 2; grid-template-rows: subgrid; row-gap: 0; align-content: start; }
+}
+.v-head { display: flex; align-items: center; gap: 16px; margin-bottom: 14px; }
+.v-head h3 { margin: 0; font-family: var(--head); text-transform: var(--head-case); letter-spacing: .1em; font-weight: var(--head-weight); font-size: 21px; }
+.v-head p { margin: 2px 0 0; color: var(--muted); font-size: 14px; }
+.v-icon { flex: 0 0 64px; width: 64px; height: 64px; fill: none; stroke: var(--ink); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.v-icon .thin { stroke-width: 1; stroke-dasharray: 2 4; }
+.v-icon .hair { stroke-width: 1; }
+.v-icon .frame { stroke-width: 6; stroke-linecap: butt; stroke-linejoin: miter; }
+.v-icon .dot { fill: var(--ink); stroke: none; }
+.v-icon .badge { fill: var(--card); }
+.v-group ul { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.v-group li { border-bottom: 1px solid var(--line); }
+.v-group li:last-child { border-bottom: 0; }
+.v-group a { display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 14px 4px; color: var(--ink); text-decoration: none; }
+.v-text { flex: 1 1 auto; display: flex; flex-direction: column; gap: 2px; }
+.v-name { font-weight: 600; display: inline-flex; align-items: center; gap: 8px; }
+.v-note { font-size: 14px; color: var(--muted); }
+.v-flag { flex: 0 0 16px; width: 16px; height: 16px; border-radius: 50%; box-shadow: 0 0 0 1px var(--line); }
+.v-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 2px; }
+.v-tag { display: inline-flex; align-items: center; gap: 5px; padding: 3px 9px 3px 5px; border-radius: 12px; background: var(--soft); color: var(--ink); font-size: 12.5px; line-height: 1.3; white-space: nowrap; }
+@media (max-width: 1180px) and (min-width: 901px) { .v-tag { white-space: normal; } }
+.v-tag svg { flex: 0 0 14px; width: 14px; height: 14px; padding: 2px; box-sizing: border-box; border-radius: 50%; background: var(--muted); fill: none; stroke: var(--card); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.v-arrow { flex: 0 0 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform .2s; }
+.v-group a:hover .v-name > span { text-decoration: underline; text-underline-offset: 4px; }
+.v-group a:hover .v-arrow { transform: translateX(3px); }
+.v-group a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 6px; }
+.v-foot { margin: 22px auto 0; max-width: 640px; color: var(--muted); font-size: 15px; }
+@media (max-width: 900px) { .v-grid { grid-template-columns: 1fr; grid-template-rows: none; max-width: 560px; margin: 0 auto; } .v-group { grid-row: auto; grid-template-rows: auto auto; } }
+@media (prefers-reduced-motion: reduce) { .v-arrow { transition: none; } }
+
 [hidden] { display: none !important; }
 
 @media (max-width: 900px) {
